@@ -1,7 +1,7 @@
 ﻿# Agriculture Dataset Scraping
 
 ## Overview
-This is the repo where I store my proposed solution to the assignment provided by FreightFox.
+This is the repo where I store my proposed solution to the assignment provided.
 
 I'll begin by sharing the answer to the second question which is the SQL query, followed by instructions on installation and usage. Beyond that, I provide auxiliaries like the data dictionary, my justification for design decisions, and other sundries.
 
