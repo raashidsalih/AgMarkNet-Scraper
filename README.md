@@ -39,7 +39,7 @@ SELECT * FROM top_5 WHERE RANK<=5 AND commodity IN ('Potato', 'Onion', 'Wheat', 
 ##### Step 1: Clone
 Clone this git repository using:
 ```bash
-git clone https://github.com/raashidsalih/FreightFox.git
+git clone https://github.com/raashidsalih/AgMarkNet-Scraper.git
 ```
 
 ##### Step 2: Configure
