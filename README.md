@@ -90,7 +90,7 @@ python scrape_agmarket.py [-h] --commodity COMMODITY --state STATE [STATE ...] -
 | \-\-time_agg  | Time Aggregate Parameter | time aggregate options to group data by. Options are [Daily, Monthly, Yearly]. Default is monthly.                 |
 
 - Note that if the program fails for one state in a list, then it won't run for the other states following it automatically. 
-- Any argument that has a space will need to be surrounded by braces. See:
+- Any argument that has a space will need to be surrounded by quotes. See:
 ```
 "chili red", "Tamil Nadu"
 ```
@@ -145,7 +145,7 @@ This is what such a solution would look like in practice:
 - The rate determining step here is how quickly AgMarkNet is able to load. I implemented timeout using a function bundled with Selenium, and had to use ```time.sleep()``` to provide enough time for the download to begin after the *"download excel"* button was clicked. 
 - Downloading the data in CSV/TSV as mentioned in the question was not possible (perhaps they stopped offering that service). The alternative would be to scrape the resulting table page by page using Selenium, which was an option I was not willing to consider.
 ---------
-- The CLI was developed using ```argparse```, although various alternatives exist like ```Click```, and ```docopt```.  However, ```argparse ```seems to be the most popular implementation.
+- The CLI was developed using ```argparse```, although various alternatives exist like ```Click```, and ```docopt```.  However, ```argparse```seems to be the most popular framework for the usecase.
 - The SQL commands were tested on a table defined with the following SQL query:
 ```SQL
 DROP TABLE IF EXISTS schema_project.agmarket_monthly;
