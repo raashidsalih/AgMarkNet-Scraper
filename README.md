@@ -1,7 +1,7 @@
 ﻿# Agriculture Market Data Scraper
 
 ## Overview
-This is a tool that is designed to collect data from Agmarknet[https://agmarknet.gov.in/] which is a government service that collates Agricultural Market information. The current implementation employs a direct URL substitution approach that aims to minimize interactions with website for stability, and moves the relevant data collected to a Postgres database (as default behavior).
+This is a tool that is designed to gather data from [Agmarknet](https://agmarknet.gov.in/) which is a government service that collates Agricultural Market information. The current implementation employs a direct URL substitution approach that aims to minimize interactions with website for stability, and moves the relevant data collected to a Postgres database (as default behavior).
 
 ## Installation Instructions
 #### Prerequisites
