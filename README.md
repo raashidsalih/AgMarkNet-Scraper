@@ -1,34 +1,8 @@
-﻿# Agriculture Dataset Scraping
+﻿# Agriculture Market Data Scraper
 
 ## Overview
-This is the repo where I store my proposed solution to the assignment provided.
+This is a tool that is designed to collect data from Agmarknet[https://agmarknet.gov.in/] which is a government service that collates Agricultural Market information. The current implementation employs a direct URL substitution approach that aims to minimize interactions with website for stability, and moves the relevant data collected to a Postgres database (as default behavior).
 
-I'll begin by sharing the answer to the second question which is the SQL query, followed by instructions on installation and usage. Beyond that, I provide auxiliaries like the data dictionary, my justification for design decisions, and other sundries.
-
-## SQL Solution
-###### QUESTION
-***Write a single SQL query to return the top 5 states for 4 commodities (Potato, Onion, Wheat, tomato) – Output should contain 20 records only.***
-
-###### SOLUTION
-- The query employs CTE and a window function to generate the final solution. 
-- State's Rank included in final table for readability.
-- Assuming "top" in the question refers to price. In this case, modal price was chosen (compared to min and max) since it is the average. Refer to data dictionary to understand the available columns.
-
-```SQL
-with top_5 as
- (SELECT
-    commodity,
-    state,
-    ROUND(AVG(modal_price),2) as AVERAGE,
-    ROW_NUMBER() OVER (PARTITION BY commodity Order by ROUND(AVG(modal_price),2)  DESC) RANK
-     
-    FROM schema_project.agmarket_monthly
-     
-    Group by state, commodity
-    Order BY commodity, AVERAGE DESC)
-    
-SELECT * FROM top_5 WHERE RANK<=5 AND commodity IN ('Potato', 'Onion', 'Wheat', 'Tomato')
-```
 ## Installation Instructions
 #### Prerequisites
 1. Ensure selenium is operational using the Chrome WebDriver. Selenium 4.6 and later downloads the appropriate driver without any manual intervention required. However, if you're on the latest version and still run into any issues, [troubleshoot using the instructions here.](https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location/)
@@ -181,3 +155,28 @@ ALTER TABLE IF EXISTS schema_project.agmarket_monthly
 - In the next iteration, I'd like to:
 1. Find an alternative to Selenium due to the external browser dependency, and also the lag encountered by actually clicking the button instead of somehow directly triggering the JavaScript to do so.
 2. Implement unit and integration tests as a part of a CI (Continuous Integration) pipeline to promote robust updates.
+
+## Sample SQL Query
+###### OBJECTIVE
+***A single SQL query to return the top 5 states for 4 commodities (Potato, Onion, Wheat, tomato). As an integrity check, the output should contain 20 records.***
+
+###### QUERY DESIGN
+- The query employs CTE and a window function.
+- State's Rank included in final table for readability.
+- Modal price chosen (compared to min and max) since it is the average. Refer to data dictionary to understand the available columns.
+
+```SQL
+with top_5 as
+ (SELECT
+    commodity,
+    state,
+    ROUND(AVG(modal_price),2) as AVERAGE,
+    ROW_NUMBER() OVER (PARTITION BY commodity Order by ROUND(AVG(modal_price),2)  DESC) RANK
+     
+    FROM schema_project.agmarket_monthly
+     
+    Group by state, commodity
+    Order BY commodity, AVERAGE DESC)
+    
+SELECT * FROM top_5 WHERE RANK<=5 AND commodity IN ('Potato', 'Onion', 'Wheat', 'Tomato')
+```
