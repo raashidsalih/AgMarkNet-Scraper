@@ -104,7 +104,7 @@ This is what such a solution would look like in practice:
 
  - I organized the Python project following the Model-View-Controller (MVC) Architectural pattern for better separation of concerns. The controller has been renamed to ```scrape_agmarket.py``` to reflect the naming in the question. The other components remain unchanged.
 --------
- - The straightforward approach would be to use Selenium to navigate from the AgMarkNet homepage, navigate using the parameters we want, and finally scrape the results.
+ - The straightforward approach would be to use Selenium to navigate from the AgMarkNet homepage, input the parameters we want, and finally scrape the results.
  - The issue is that the site is irregular in its availability. In the off chance that one does gain access, it either has a server error or is very slow to load and respond.
  - This makes rapid prototyping and experimentation rather cumbersome. It also brings into question the reliability of whatever solution that has been developed.
  - Thus a conscious design decision was to use Selenium as scarcely as possible to bypass such outages.
