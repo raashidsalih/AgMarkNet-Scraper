@@ -117,7 +117,7 @@ This is what such a solution would look like in practice:
 - Employed ```.env``` file for security with regards to database connection credentials. GitHub typically ignores ```.env``` files, therefore the need to rename it to ```sample.env```.
 - Error handling implemented for the inputs using a variety of methods, and in general using try-except.
 - The rate determining step here is how quickly AgMarkNet is able to load. I implemented timeout using a function bundled with Selenium, and had to use ```time.sleep()``` to provide enough time for the download to begin after the *"download excel"* button was clicked. 
-- Downloading the data in CSV/TSV as mentioned in the question was not possible (perhaps they stopped offering that service). The alternative would be to scrape the resulting table page by page using Selenium, which was an option I was not willing to consider.
+- Downloading the data in CSV/TSV was not possible (perhaps they stopped offering said service). The alternative would be to scrape the resulting table page by page using Selenium, which was an option I was not willing to consider.
 ---------
 - The CLI was developed using ```argparse```, although various alternatives exist like ```Click```, and ```docopt```.  However, ```argparse```seems to be the most popular framework for the usecase.
 - The SQL commands were tested on a table defined with the following SQL query:
