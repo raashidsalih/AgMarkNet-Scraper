@@ -112,7 +112,7 @@ This is what such a solution would look like in practice:
  - An alternative approach is to inject the parameters straight into the URL to directly get the results. However, certain parameters were encoded (commodity and state, for instance), for which the mapping was unknown. You can see it in part of the URL below:
 ```https://agmarknet.gov.in/SearchCmmMkt.aspx?Tx_Commodity=19&Tx_State=TN&Tx_District=0....```
 - Notice ```Tx_Commodity``` and ```Tx_State```. The number 19 represents the commodity **"Banana"**, while TN represents the state of **"Tamil Nadu".**
-- I was able to find the mappings by looking into the source code of the website, and generate CSVs of said mapping from the HTML. This is where ```generator.py``` was used. The results are the data sources that you can observe in the repo.
+- I was able to find the mappings by looking into the source code of the website, and generate CSVs of said mapping from the HTML. The results are the data sources that you can observe in the repo.
 --------
 - Employed ```.env``` file for security with regards to database connection credentials. GitHub typically ignores ```.env``` files, therefore the need to rename it to ```sample.env```.
 - Error handling implemented for the inputs using a variety of methods, and in general using try-except.
